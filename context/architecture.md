@@ -66,4 +66,5 @@ Strategy: GitHub Flow. `main` is always deployable.
 - Merge to `main` only after the unit's task review (and, once tests exist, after they pass).
 - Delete the branch after merge.
 - Commit messages follow Conventional Commits (feat/fix/docs/chore/refactor/test).
+- Commit messages never include a `Co-Authored-By: Claude` (or any AI attribution) trailer.
 - No GitFlow-style develop/release/hotfix branches until there is a real multi-environment release cadence to justify them.
