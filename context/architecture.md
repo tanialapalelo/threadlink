@@ -46,3 +46,13 @@ Rules this codebase must never violate:
 ## AI / background tasks
 
 None in MVP. AI recommendations and link suggestions are explicitly out of scope (PRD Section 7).
+
+## Git workflow
+
+Strategy: GitHub Flow. `main` is always deployable.
+
+- Each implementation unit (one superpowers plan) gets its own short-lived branch, named `feat/<unit-slug>` (or `fix/...`, `chore/...` matching Conventional Commits type).
+- Merge to `main` only after the unit's task review (and, once tests exist, after they pass).
+- Delete the branch after merge.
+- Commit messages follow Conventional Commits (feat/fix/docs/chore/refactor/test).
+- No GitFlow-style develop/release/hotfix branches until there is a real multi-environment release cadence to justify them.
