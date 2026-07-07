@@ -1,13 +1,13 @@
 # Progress Tracker
 
 ## Current Phase
-Project scaffold setup: context files, CLAUDE.md, and permissions, no product code yet.
+Project scaffold complete. Waiting on the first product implementation unit.
 
 ## Active Plan
-docs/superpowers/plans/2026-07-07-project-scaffold.md
-
-## Last Completed Unit
 None yet.
 
+## Last Completed Unit
+Project scaffold setup: context files, CLAUDE.md, .gitignore, and .claude/settings.json, per docs/superpowers/plans/2026-07-07-project-scaffold.md.
+
 ## Next Up
-Fill in context/code-standards.md once the first implementation unit (Expo/Next.js/Supabase project scaffolding) begins.
+Brainstorm and plan the first implementation unit (Expo/Next.js/Supabase project scaffolding), which is also when context/code-standards.md gets filled in.
