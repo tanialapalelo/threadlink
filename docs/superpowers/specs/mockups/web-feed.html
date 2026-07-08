@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>ThreadLink — Web: Feed (sidebar + centered modal)</title>
+<style>
+  body { margin:0; padding:40px; background:#F0F0EE; font-family:-apple-system,Helvetica,Arial,sans-serif; }
+  .caption { text-align:center; color:#8A8578; font-size:13px; margin-bottom:16px; }
+  .frame { width:100%; max-width:1100px; height:640px; margin:0 auto; background:#FAFAF8; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; display:flex; position:relative; }
+  .sidebar { width:220px; flex-shrink:0; background:#fff; border-right:1px solid #EFEFEF; padding:24px 16px; box-sizing:border-box; }
+  .brand { font-size:19px; font-weight:700; color:#1A1A1A; margin-bottom:28px; }
+  .navitem { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; font-size:14px; margin-bottom:4px; }
+  .navitem.active { background:#FBF0E9; color:#C4703F; font-weight:600; }
+  .navitem.inactive { color:#8A8578; }
+  .navicon { width:16px; height:16px; border-radius:4px; }
+  .main { flex:1; padding:28px 24px; box-sizing:border-box; display:flex; justify-content:center; }
+  .col { width:100%; max-width:420px; }
+  .colhead { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+  .coltitle { font-size:19px; font-weight:700; color:#1A1A1A; }
+  .addbtn { background:#C4703F; color:#fff; border-radius:999px; padding:7px 14px; font-size:13px; font-weight:500; }
+  .card { background:#fff; border:1px solid #EFEFEF; border-radius:12px; padding:12px; margin-bottom:12px; }
+  .row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .avatar { width:24px; height:24px; border-radius:50%; background:#7A8B69; }
+  .meta { font-size:13px; color:#8A8578; }
+  .thumb { height:100px; border-radius:8px; background:#EDEBE0; margin-bottom:8px; }
+  .cardtitle { font-size:17px; font-weight:600; color:#1A1A1A; margin-bottom:4px; }
+  .note { font-size:13px; color:#7A8B69; }
+  .overlay { position:absolute; inset:0; background:rgba(26,26,26,0.35); display:flex; align-items:center; justify-content:center; }
+  .modal { width:360px; background:#fff; border-radius:16px; padding:24px; box-sizing:border-box; }
+  .modaltitle { font-size:19px; font-weight:700; color:#1A1A1A; margin-bottom:14px; }
+  .field { background:#FAFAF8; border:1px solid #EFEFEF; border-radius:12px; padding:10px 14px; margin-bottom:12px; }
+  .fieldlabel { font-size:13px; color:#8A8578; margin-bottom:4px; }
+  .fieldvalue { font-size:15px; color:#1A1A1A; }
+  .modalactions { display:flex; gap:10px; justify-content:flex-end; }
+  .cancel { color:#8A8578; padding:10px 16px; font-size:14px; }
+  .save { background:#C4703F; color:#fff; border-radius:999px; padding:10px 20px; font-size:14px; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="caption">Web — Feed with sidebar nav and centered "Add link" modal (web is full write-parity with mobile, not read-only)</div>
+<div class="frame">
+  <div class="sidebar">
+    <div class="brand">ThreadLink</div>
+    <div class="navitem active"><div class="navicon" style="background:#C4703F;"></div>Feed</div>
+    <div class="navitem inactive"><div class="navicon" style="background:#EFEFEF;"></div>Bookmarks</div>
+    <div class="navitem inactive"><div class="navicon" style="background:#EFEFEF;"></div>Profile</div>
+  </div>
+  <div class="main">
+    <div class="col">
+      <div class="colhead">
+        <div class="coltitle">Feed</div>
+        <div class="addbtn">+ Tambah link</div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="avatar"></div><div class="meta">Kamu &middot; 1d</div></div>
+        <div class="thumb"></div>
+        <div class="cardtitle">Artikel desain onboarding yang bagus</div>
+        <div class="note">"contoh buat referensi flow invite"</div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay">
+    <div class="modal">
+      <div class="modaltitle">Tambah link</div>
+      <div class="field">
+        <div class="fieldlabel">Link</div>
+        <div class="fieldvalue">youtube.com/watch?v=roadtrip-mix</div>
+      </div>
+      <div class="field" style="min-height:56px;">
+        <div class="fieldlabel">Catatan (opsional)</div>
+        <div class="fieldvalue">buat road trip sabtu nanti</div>
+      </div>
+      <div class="modalactions">
+        <div class="cancel">Batal</div>
+        <div class="save">Simpan</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

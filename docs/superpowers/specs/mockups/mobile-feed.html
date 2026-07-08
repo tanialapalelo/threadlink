@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>ThreadLink — Mobile: Feed</title>
+<style>
+  body { margin:0; padding:40px; background:#F0F0EE; font-family:-apple-system,Helvetica,Arial,sans-serif; display:flex; justify-content:center; }
+  .caption { text-align:center; color:#8A8578; font-size:13px; margin-bottom:16px; }
+  .phone { width:390px; min-height:844px; background:#FAFAF8; border-radius:24px; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; }
+  .header { display:flex; justify-content:space-between; align-items:center; padding:24px 20px 12px; }
+  .title { font-size:24px; font-weight:700; color:#1A1A1A; }
+  .search { font-size:13px; color:#8A8578; }
+  .list { padding:4px 20px 12px; display:flex; flex-direction:column; gap:12px; }
+  .card { background:#fff; border:1px solid #EFEFEF; border-radius:12px; padding:12px; }
+  .row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .avatar { width:24px; height:24px; border-radius:50%; }
+  .meta { font-size:13px; color:#8A8578; }
+  .thumb { height:140px; border-radius:8px; background:#EDEBE0; margin-bottom:8px; }
+  .cardtitle { font-size:17px; font-weight:600; color:#1A1A1A; margin-bottom:4px; }
+  .note { font-size:13px; }
+  .tabbar { display:flex; justify-content:space-around; padding:12px 32px 24px; background:#fff; border-top:1px solid #EFEFEF; margin-top:auto; }
+  .tab { display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; font-weight:500; }
+  .dot { width:20px; height:20px; border-radius:50%; }
+</style>
+</head>
+<body>
+<div>
+  <div class="caption">Mobile — Feed (matches the Figma "Screen / Feed" frame)</div>
+  <div class="phone" style="display:flex;flex-direction:column;">
+    <div class="header">
+      <div class="title">ThreadLink</div>
+      <div class="search">Search</div>
+    </div>
+    <div class="list">
+      <div class="card">
+        <div class="row"><div class="avatar" style="background:#C4703F;"></div><div class="meta">Ardi &middot; 2h</div></div>
+        <div class="thumb"></div>
+        <div class="cardtitle">Playlist jalan-jalan kita</div>
+        <div class="note" style="color:#C4703F;">"buat road trip sabtu nanti"</div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="avatar" style="background:#7A8B69;"></div><div class="meta">Kamu &middot; 1d</div></div>
+        <div class="thumb"></div>
+        <div class="cardtitle">Artikel desain onboarding yang bagus</div>
+        <div class="note" style="color:#7A8B69;">"contoh buat referensi flow invite"</div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab" style="color:#C4703F;"><div class="dot" style="background:#C4703F;"></div>Feed</div>
+      <div class="tab" style="color:#8A8578;"><div class="dot" style="background:#8A8578;"></div>Bookmarks</div>
+      <div class="tab" style="color:#8A8578;"><div class="dot" style="background:#8A8578;"></div>Profile</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

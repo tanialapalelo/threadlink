@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>ThreadLink — Mobile: Bookmarks &amp; Tags</title>
+<style>
+  body { margin:0; padding:40px; background:#F0F0EE; font-family:-apple-system,Helvetica,Arial,sans-serif; display:flex; justify-content:center; }
+  .caption { text-align:center; color:#8A8578; font-size:13px; margin-bottom:16px; }
+  .phone { width:390px; min-height:844px; background:#FAFAF8; border-radius:24px; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; }
+  .title { padding:24px 20px 8px; font-size:24px; font-weight:700; color:#1A1A1A; }
+  .chips { display:flex; gap:8px; padding:8px 20px 12px; }
+  .chip { border-radius:999px; padding:5px 12px; font-size:12px; }
+  .chip.active { background:#C4703F; color:#fff; }
+  .chip.inactive { background:#fff; border:1px solid #EFEFEF; color:#8A8578; }
+  .list { padding:4px 20px; }
+  .card { background:#fff; border:1px solid #EFEFEF; border-radius:12px; padding:12px; }
+  .row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .avatar { width:24px; height:24px; border-radius:50%; background:#C4703F; }
+  .meta { font-size:13px; color:#8A8578; }
+  .thumb { height:110px; border-radius:8px; background:#EDEBE0; margin-bottom:8px; }
+  .cardtitle { font-size:17px; font-weight:600; color:#1A1A1A; margin-bottom:4px; }
+  .note { font-size:13px; color:#C4703F; margin-bottom:8px; }
+  .tags { display:flex; gap:6px; }
+  .tag { background:#FAFAF8; color:#8A8578; border-radius:999px; padding:3px 10px; font-size:11px; }
+</style>
+</head>
+<body>
+<div>
+  <div class="caption">Mobile — Bookmarks &amp; tags. Not yet in Figma (hit MCP rate limit).</div>
+  <div class="phone">
+    <div class="title">Bookmarks</div>
+    <div class="chips">
+      <div class="chip active">Semua</div>
+      <div class="chip inactive">musik</div>
+      <div class="chip inactive">road trip</div>
+    </div>
+    <div class="list">
+      <div class="card">
+        <div class="row"><div class="avatar"></div><div class="meta">Ardi &middot; 2h</div></div>
+        <div class="thumb"></div>
+        <div class="cardtitle">Playlist jalan-jalan kita</div>
+        <div class="note">"buat road trip sabtu nanti"</div>
+        <div class="tags"><div class="tag">musik</div><div class="tag">road trip</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
