@@ -1,13 +1,13 @@
 # ThreadLink: Architecture
 
-Status: Recommended, not locked. This deviates from the PRD's "Recommended Tech Stack" (Section 3.2) on the backend: the team chose a self-built Go API over Supabase for language familiarity (decided 2026-07-08). Everything else (mobile, web, push notifications) still follows the PRD recommendation. Revisit once the prototype (PRD Section 8, step 3) is validated with real pairs.
+Status: Recommended, not locked. This deviates from the PRD's "Recommended Tech Stack" (Section 3.2) on the backend: the team chose a self-built Go API over Supabase for language familiarity (decided 2026-07-08). It also deviates from the PRD's scope for web, which specified read-only: web now has full write parity with mobile except for OS share-sheet handoff, which browsers don't support (decided 2026-07-08, see Invariant 2). Everything else still follows the PRD recommendation. Revisit once the prototype (PRD Section 8, step 3) is validated with real pairs. The security implications of web's expanded write surface (CSRF, browser session handling) have not been designed yet; this is a known gap to close before web write endpoints are implemented.
 
 ## Stack
 
 | Layer | Technology | Role |
 |---|---|---|
 | Mobile (iOS + Android) | React Native (Expo) | Single codebase for both mobile platforms; fast iteration; supports native Share Extension / Share Sheet integration |
-| Web | Next.js, sharing React components with mobile | Read/browse-only client in MVP; shared component logic where feasible |
+| Web | Next.js, sharing React components with mobile | Full write-parity client (pair creation/invite, manual link paste, notes, tags, bookmarks); shared component logic where feasible. No OS share-sheet equivalent, browsers don't expose one. |
 | Backend | Go (net/http or a thin router such as chi/echo) | Single service owning all business logic, auth verification, and data access. Chosen over Supabase because the team is more comfortable writing Go than configuring a platform. |
 | Database | PostgreSQL. Docker Compose for local development, a managed provider (for example Neon, Railway, or RDS, exact choice deferred to deploy time) in production | Single source of truth. No Supabase involved anywhere in the stack. |
 | Auth | Google/Apple ID token verified directly in Go, custom-issued JWT (access + refresh) sent via `Authorization: Bearer` header | No third-party auth-as-a-service. Google and Apple already handle the login UI and identity proof; Go only verifies their token and issues its own session. |
@@ -18,7 +18,7 @@ Status: Recommended, not locked. This deviates from the PRD's "Recommended Tech 
 ## System boundaries
 
 - Mobile app (Expo/React Native) owns: UI, iOS Share Extension target, Android Share Sheet intent handling, push notification registration and display, secure token storage (Expo SecureStore).
-- Web app (Next.js) owns: read-only feed UI, auth sign-in, no share/compose UI in MVP, in-memory (not localStorage) token storage for the session.
+- Web app (Next.js) owns: feed UI, auth sign-in, share/compose UI (manual link paste, sender/receiver notes, tags, bookmarks), in-memory (not localStorage) token storage for the session. Same write capability as mobile except OS share-sheet handoff, which has no browser equivalent.
 - Go API service owns: all business logic, auth token verification and session issuance, all database access, the feed endpoint clients poll, and the metadata-scraping endpoint. It is the only component that talks to Postgres and the only component that makes outbound requests to arbitrary third-party URLs.
 - No client (mobile or web) ever queries Postgres directly. All data access goes through the Go API.
 
@@ -41,7 +41,7 @@ Status: Recommended, not locked. This deviates from the PRD's "Recommended Tech 
 Rules this codebase must never violate:
 
 1. A pair space has exactly two members. Group spaces (3+ people) are explicitly out of scope for MVP; do not build the data model in a way that assumes N members.
-2. The web app is read-only in MVP. No link sharing, note-adding, or any write action ships on web; only iOS and Android can create content.
+2. The web app has full write parity with mobile (pair creation/invite, manual link paste, sender/receiver notes, tags, bookmarks), decided 2026-07-08, deviating from the original PRD-specified read-only web scope. The only capability web cannot replicate is native OS share-sheet handoff, since browsers have no equivalent; web sharing is manual-paste only. Every API handler must therefore treat mobile and web clients identically for authorization purposes (see Invariant 8); nothing may gate a write action on client platform. The security review for this expanded write surface (CSRF protection, browser session/token handling) has not been done yet and must happen before any web write endpoint ships.
 3. No in-app media playback. Opening a link always hands off to the native app or system browser; ThreadLink never embeds a video/audio player.
 4. No monetization or billing code until the business model is validated post-launch (PRD Section 4.1 recommendation: launch free with no limits, revisit at the 3-month mark).
 5. Link metadata fetch failures must degrade gracefully. If the Open Graph scrape fails, fall back to showing the URL's domain and favicon; never render a broken or empty card.

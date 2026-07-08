@@ -34,7 +34,7 @@ ThreadLink is a shared link inbox for two people ("pairs") who want to send each
 - Bookmarks and tags: one-tap bookmark into a dedicated Bookmarks view; freeform tags created at share time or after, with suggestions from past usage; tags visible to both users.
 
 ## In scope (Phase 1)
-Everything listed under "Features: Phase 1 (MVP)" above, across iOS (full feature set plus Share Extension), Android (full feature set plus Share Sheet), and web (read/browse only, mobile-first responsive, no sharing from web).
+Everything listed under "Features: Phase 1 (MVP)" above, across iOS (full feature set plus Share Extension), Android (full feature set plus Share Sheet), and web (full feature set: pair creation/invite, pasting a link manually, sender/receiver notes, tags, and bookmarks, decided 2026-07-08, see architecture.md for the deviation from the original PRD-specified read-only web scope). Web has no equivalent to the OS share sheet since browsers don't expose one, so link sharing on web is manual-paste only; every other write action mirrors mobile.
 
 ## Out of scope (MVP)
 - Group spaces (3+ people): a space is always exactly one pair.
@@ -51,7 +51,7 @@ Light discussion thread per link (3-5 replies max), weekly digest email, auto-ar
 ## Success criteria (from PRD success metrics)
 - 3-month target: 500 active pairs (both users active in 7 days), 5+ links shared per pair per week, 40% D30 retention (both users), 0.4 avg notes per shared link, 35% notification open rate.
 - 6-month target: 2,500 active pairs, 8+ links shared per pair per week, 55% D30 retention, 0.7 avg notes per shared link, 40% notification open rate.
-- Concretely, "done" for Phase 1 means: a signed-in pair can invite each other, share a link from a native share sheet with a note, get notified, view the link, add their own note, and find it again later via filter or search, on iOS, Android, and web (read-only).
+- Concretely, "done" for Phase 1 means: a signed-in pair can invite each other, share a link (native share sheet on mobile, manual paste on web) with a note, get notified, view the link, add their own note, and find it again later via filter or search, on iOS, Android, and web.
 
 ## Source
 Derived from `ThreadLink_PRD.pdf` v1.0 (May 2026, Draft, In Review).

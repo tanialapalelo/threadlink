@@ -1,16 +1,18 @@
 # Progress Tracker
 
 ## Current Phase
-UI design system decided and documented. No Figma file existed, so the direction was established from scratch via the brainstorming skill's visual companion instead of imported from Figma.
+UI design system decided and documented (mobile + web). Web's scope changed from read-only to full write parity with mobile (decided 2026-07-08); `architecture.md` and `project-overview.md` are updated to reflect this, but the security review for web's expanded write surface is still outstanding.
 
 ## Active Plan
-None yet. One brainstorm is still open and unfinished:
-1. Unit "monorepo skeleton" (apps/web, apps/mobile placeholder, apps/api in Go): design was discussed in chat and approved in principle, but the design doc was never written to docs/superpowers/specs/. Not started as an actual implementation plan.
+None yet. Two things are open and unfinished:
+1. Unit "monorepo skeleton" (apps/web, apps/mobile placeholder, apps/api in Go): design was discussed in chat and approved in principle, but the design doc was never written to docs/superpowers/specs/. Paused mid-brainstorm on the Go router choice (net/http vs chi) to prioritize UI/Figma work; not started as an actual implementation plan.
+2. Security review for web's new write capability (CSRF protection, browser session/token handling) per architecture.md's Status note and Invariant 2. Must happen before any web write endpoint is implemented.
 
 ## Last Completed Unit
-`context/ui-context.md` filled in (color tokens, typography, border radius scale, component library, layout patterns, icon library) via a brainstorming session using the superpowers visual companion. Design doc written to `docs/superpowers/specs/2026-07-08-ui-design-system-design.md`. Awaiting user review of the spec before deciding next step.
+Web scope change formalized: `context/architecture.md` (Status note, Stack table, System boundaries, Invariant 2) and `context/project-overview.md` (In scope, Success criteria) updated so web has full write parity with mobile except OS share-sheet handoff. Mockups for both mobile (Feed, Onboarding/invite, Add link+note, Bookmarks) and web (Feed with sidebar nav + centered modal, Bookmarks) were built and saved locally as standalone HTML in `docs/superpowers/specs/mockups/`, since the Figma MCP connection hit its Starter-plan rate limit after only 2 of the 4 mobile screens (Feed, Onboarding) were pushed to the Figma file (https://www.figma.com/design/4SpPSCo1KhEuYIPYNvjEmX).
 
 ## Next Up
-1. User to review `docs/superpowers/specs/2026-07-08-ui-design-system-design.md`.
-2. The Go monorepo skeleton unit (see Active Plan above) is still open and needs its design doc written before implementation, whenever backend work resumes. The user is learning Go in parallel, so actual Go implementation is intentionally deferred, docs/specs for it can proceed earlier if useful.
-3. Optional: generate an actual Figma file from the decided design tokens, now that Figma MCP access works, if the user wants a visual file before component implementation.
+1. Once the Figma MCP rate limit resets (or the plan is upgraded), push the remaining screens (mobile Add link+note, mobile Bookmarks, web Feed, web Bookmarks) to the same Figma file using the saved local HTML mockups as the source of truth.
+2. Add the web layout patterns (sidebar nav, centered modal, single-column feed) decided this session to `context/ui-context.md`, which currently only documents mobile layout patterns.
+3. Security review for web's write capability (see Active Plan above), before any web write endpoint is implemented.
+4. Resume the Go monorepo skeleton design doc (see Active Plan above), including the still-open net/http vs chi router decision. The user is learning Go in parallel, so actual Go implementation is intentionally deferred, docs/specs for it can proceed earlier if useful.
